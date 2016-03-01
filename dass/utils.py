@@ -19,4 +19,7 @@ def get_parser():
 
 	parser.add_argument('--prefix', action='store', dest='prefix',help='exp log prefix to append exp/{} default = 0',default = '0')
 
+	parser.add_argument('--train', action='store', dest='train',help='train data : {0 : train2393.cleanup.xml , 1 : train-less-than-40.manual-edit.xml} ,default : 0',default = '0')
+
+	parser.add_argument('--model', action='store', dest='model',help='the type of the model {0,1,2}, default = 0', type = int, default = 0)
 	return parser
