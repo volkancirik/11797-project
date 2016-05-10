@@ -3,7 +3,7 @@ import argparse
 def get_parser():
 	parser = argparse.ArgumentParser()
 
-	parser.add_argument('--batch-size', action='store', dest='batch_size',help='batch-size , default 128',type=int,default = 128)
+	parser.add_argument('--batch-size', action='store', dest='batch_size',help='batch-size , default 64',type=int,default = 64)
 
 	parser.add_argument('--epochs', action='store', dest='n_epochs',help='# of epochs, default = 500',type=int,default = 500)
 
@@ -22,4 +22,22 @@ def get_parser():
 	parser.add_argument('--train', action='store', dest='train',help='train data : {0 : train2393.cleanup.xml , 1 : train-less-than-40.manual-edit.xml} ,default : 0',default = '0')
 
 	parser.add_argument('--model', action='store', dest='model',help='the type of the model {0,1,2}, default = 0', type = int, default = 0)
+
+	parser.add_argument('--finetune', action='store_true', dest='finetune',help='finetune word embeddings')
+
+	parser.add_argument('--bucket', action='store_false', dest='bucket',help='do not use buckets')
+
+	parser.set_defaults(finetune = False)
+	parser.set_defaults(buckets = True)
+
+	return parser
+
+def get_parser_test():
+	parser = argparse.ArgumentParser()
+
+	parser.add_argument('--batch-size', action='store', dest='batch_size',help='batch-size , default 64',type=int,default = 64)
+
+	parser.add_argument('--path', action='store', dest='path',help='path ',default = '')
+	parser.add_argument('--dataset', action='store', dest='dataset',help='dataset liveqa - factual, default liveqa ',default = 'liveqa')
+
 	return parser
